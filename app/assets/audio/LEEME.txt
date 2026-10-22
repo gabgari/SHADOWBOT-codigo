@@ -1,0 +1,11 @@
+CANCIONES DE LOS BAILES
+=======================
+
+Los audios no se incluyen (tienen derechos de autor). Para que suenen los bailes,
+coloca aqui dos MP3 recortados con estos nombres:
+
+  everybody.mp3     ~21.5 s  (baile n=5)
+  tokyo_drift.mp3   ~13.6 s  (baile n=6)
+
+Si cambias la duracion, ajusta la coreografia en firmware/CONTROL/CONTROL.ino
+(BAILE_EVERYBODY / BAILE_TOKYO) y durSec en lib/services/dance_songs.dart.

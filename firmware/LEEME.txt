@@ -1,0 +1,63 @@
+SHADOWBOT · CODIGOS SIN GC9A01
+==============================
+
+Versión del proyecto SIN la pantalla redonda GC9A01 (la sustituye un LCD
+16x2 I2C en CONTROL). Son SOLO 3 placas:
+  ESP32-S3 CONTROL  ·  ESP8266 SENSORES  ·  ESP32-S3 CAM
+Los códigos funcionan entre sí y con la app SIN cambios (misma red WiFi,
+misma API). PRUEBA_BTS_SERVOS no es otra placa: es una prueba opcional que se
+carga en la misma ESP32-S3 de CONTROL (después vuelves a cargar CONTROL).
+
+Cada carpeta se abre en el Arduino IDE (el .ino tiene que estar dentro de su
+carpeta del mismo nombre).
+
+
+1) CONTROL  ->  ESP32-S3 (N16R8)
+   Motores (2x BTS7960), brazo (2 servos) y LCD 16x2 I2C.
+     Placa: "ESP32S3 Dev Module"   ·   PSRAM: "Disabled"
+     Librería: ESP32Servo
+   Conexiones:
+     BTS7960 IZQUIERDO   RPWM -> GPIO41   LPWM -> GPIO40
+     BTS7960 DERECHO     RPWM -> GPIO39   LPWM -> GPIO38
+     BTS7960 (ambos)     VCC, R_EN, L_EN -> 3V3   ·   GND -> GND
+     Servo PAN  (naranja) -> GPIO2
+     Servo TILT (naranja) -> GPIO1
+     Servos: rojo -> 5 V (mejor BEC/fuente aparte) · café -> GND
+     Batería de motores SOLO a B+ / B- de los BTS7960.
+     GND COMÚN: batería, BTS7960, servos y ESP32-S3.
+     LCD 16x2 I2C: GND -> GND · VCC -> 5V · SDA -> GPIO14 · SCL -> GPIO13
+       (4 pines seguidos al final de la tira izquierda: 13, 14, 5V, GND)
+       Jumper "LED" puesto (luz de fondo). Potenciómetro azul = contraste:
+       si prende y no ves letras, gíralo. No necesita librería.
+       Muestra el modo (sin modo = STANDARD con calavera) y el MQ-2.
+   Los modos (SPORT, EXPLORACIÓN, JUEGO) y los bailes se manejan desde la app.
+   También acepta comandos por el Monitor Serie (115200), con WiFi y app
+   funcionando: a 150, adelante 150, s, pan 90, centro, barrido, estado, ?
+   Si por Serie se mueve y con la app no -> el problema es la red/app.
+   Servos SUAVES (aceleran y frenan): ajusta con  vel 200 / acel 600 /
+   suave off  por Serie.
+
+2) PRUEBA_BTS_SERVOS  ->  la MISMA ESP32-S3 de CONTROL (opcional)
+   Prueba los BTS7960 y los servos desde el Monitor Serie (115200), sin WiFi.
+   Escribe  ?  para ver los comandos. Empieza con:  todo
+   Mismo movimiento suave de servos que CONTROL (barrido, vel, acel, suave).
+   Funciona por cualquiera de los dos USB de la placa.
+
+3) SENSORES_8266  ->  ESP8266 (NodeMCU / Wemos D1 mini)
+   MQ-2 + 4 LEDs.
+     Placa: "NodeMCU 1.0 (ESP-12E Module)" o "LOLIN(WEMOS) D1 mini"
+   Conexiones:
+     MQ-2  VCC -> VIN (5 V)   GND -> GND
+     MQ-2  AOUT -> 10 kΩ -> A0, y de A0 20 kΩ a GND (divisor)
+     LED1 -> D5   LED2 -> D6   LED3 -> D7   LED4 -> D8   (4 pines seguidos)
+     (cada LED con su resistencia de 220-330 Ω a GND)
+     No usar D3, D4 ni D0.
+
+4) CAMARA  ->  ESP32-S3 CAM
+   Solo cámara (video, fotos y aviso de IPs por Telegram).
+     Placa: "ESP32S3 Dev Module"   ·   PSRAM: "OPI PSRAM" (placas N8R8/N16R8)
+     Librería: ArduinoJson
+
+
+Todas las placas se conectan a la misma red WiFi (la que pongas en ssid/password de cada .ino) y se avisan su IP
+por UDP; CAMARA las manda al bot de Telegram.

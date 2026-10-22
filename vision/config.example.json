@@ -1,0 +1,19 @@
+{
+  "camara_usuario": "TU_USUARIO_CAMARA",
+  "camara_contrasena": "TU_CONTRASENA_CAMARA",
+  "camara_stream": "stream2",
+  "camara_ip": "",
+  "telegram_token": "",
+  "telegram_chats": [],
+  "puerto": 5000,
+  "modo": "seguridad",
+  "alertas": {
+    "fuego": true,
+    "persona": true,
+    "vehiculo": false,
+    "animal": false,
+    "objeto": false,
+    "fisura": true,
+    "oxido": true
+  }
+}

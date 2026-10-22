@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="shadow_bg">#050608</color>
+    <!-- Fondo del ícono adaptativo: el mismo negro del logo SHADOWBOTLOGOFINAL. -->
+    <color name="ic_bg">#08090D</color>
+</resources>

@@ -1,0 +1,18 @@
+VISION DEL ROBOT - Servidor de deteccion
+=========================================
+
+Instalacion (Windows)
+1. Copia esta carpeta al disco, por ejemplo C:\Vision_Robot.
+2. Copia config.example.json como config.json y llena el usuario/clave de la
+   "cuenta de camara" de la Tapo (y, si quieres alertas, el token y chats de Telegram).
+3. Pon los modelos en modelos/ (ver modelos/LEEME.txt).
+4. Doble clic en INSTALAR.bat (crea el entorno .venv e instala dependencias;
+   al final pide permiso de administrador para abrir el puerto 5000 en el firewall).
+5. Ejecuta iniciar_detector.bat.
+
+Uso
+- La camara y la app se encuentran solas en la red (anuncio por UDP 5001).
+- El video anotado sale como MJPEG en http://<IP-de-la-PC>:5000/ y /estado da el resumen en JSON.
+- Teclas en la ventana: 1 fuego, 2 seguridad, 3 inspeccion, 4 todo, q salir.
+- diagnostico_red.bat revisa que la camara, las placas y el servidor se vean en la red.
+- No abras el detector en dos PCs a la vez: el bot de Telegram solo atiende a una.

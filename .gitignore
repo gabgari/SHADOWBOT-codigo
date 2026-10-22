@@ -1,0 +1,9 @@
+# secretos y datos locales
+vision/config.json
+vision/capturas/
+vision/modelos/*.pt
+vision/.venv/
+__pycache__/
+*.pyc
+# audio con derechos de autor
+app/assets/audio/*.mp3

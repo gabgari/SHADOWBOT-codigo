@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Arranque de SHADOWBOT: solo negro; el logo aparece entre humo en la
+     pantalla de inicio de Flutter (lib/screens/splash_screen.dart). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/shadow_bg" />
+</layer-list>

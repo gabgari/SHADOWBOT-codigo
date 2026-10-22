@@ -1,0 +1,13 @@
+MODELOS (no se incluyen en el repositorio)
+==========================================
+
+detectar_fuego.py espera estos archivos en esta carpeta:
+
+  yolo11s.pt         personas, vehiculos, animales y objetos (Ultralytics YOLO11)
+  Fire_best.pt       deteccion de fuego
+  fisuras_seg_n.pt   segmentacion de fisuras (modo inspeccion)
+  corrosion_lite.pt  oxido / corrosion (modo inspeccion)
+
+yolo11s.pt se descarga solo con Ultralytics la primera vez. Los otros tres son
+modelos YOLO entrenados por terceros; usa los tuyos o cambia los nombres en
+MODELOS dentro de detectar_fuego.py.
